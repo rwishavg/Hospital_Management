@@ -249,15 +249,15 @@ $(function(){
 });
 
 $("body").on('dblclick', '#patients-in-hospital > tbody > tr', function() {
-      var NHSnumber = $(this).children('td')[0];
-      NHSnumber = NHSnumber.textContent;
-      window.location.href = URL + "/app/patient/" + NHSnumber;
+      var Pnumber = $(this).children('td')[0];
+      Pnumber = Pnumber.textContent;
+      window.location.href = URL + "/app/patient/" + Pnumber;
 });
 
 $("body").on('dblclick', '#patients-waiting > tbody > tr', function() {
-     var NHSnumber = $(this).children('td')[0];
-     NHSnumber = NHSnumber.textContent;
-     window.location.href = URL + "/app/patient/" + NHSnumber;
+     var Pnumber = $(this).children('td')[0];
+     Pnumber = Pnumber.textContent;
+     window.location.href = URL + "/app/patient/" + Pnumber;
 });
 
 /*

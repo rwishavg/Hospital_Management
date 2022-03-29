@@ -1,6 +1,3 @@
-/*
-    Require modules
-*/
 const express = require('express');
 const bodyParser = require('body-parser');
 const _ = require('lodash');
@@ -16,22 +13,13 @@ const LocalStrategy = require('passport-local').Strategy;
 const mongo = require('mongodb');
 var {mongoose} = require('./server/db/mongoose.js');
 
-/*
-    View Engine
-*/
 var app = express();
-// app.use([path,] callback [, callback...]) -> puts middleware fot the app
 app.use(express.static(__dirname + '/views'));
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(favicon(__dirname + '/public/favicon.ico'));
-// app.engine('.extenionName', renderingEngine) -> renders files
-app.engine('handlebars', exphbs({defaultLayout: 'layout'}));
-// app.set('view engine', 'engineToUse') -> sets default viewing engine
+app.engine('handlebars', exphbs.engine({defaultLayout: 'layout'}));
 app.set('view engine', 'handlebars');
 
-/*
-    Bodyparser Middleware + Express session
-*/
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
@@ -120,7 +108,7 @@ var timestamp = new Date().getTime();
 /*
     Fire the server online
 */
-app.set('port', (process.env.PORT || 3000));
+app.set('port', (process.env.PORT || 80));
 app.listen(app.get('port'), function() {
 	console.log('Server started on port '+ app.get('port'));
 });
